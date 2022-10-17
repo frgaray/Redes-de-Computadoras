@@ -2,10 +2,10 @@
   (:require
    [a]
    [b]
-   [clojure.java.io]))
+   [clojure.java.io :as io]))
 
 (defn file-writer [file-name content]
-  (with-open [w (clojure.java.io/writer file-name)]
+  (with-open [w (io/writer file-name)]
     (.write w (str content))))
 
 (defn http-get-writer [url output-name]
