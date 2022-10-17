@@ -1,0 +1,470 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Aborting connect, error determining connect sequence.
+; Jacking in...
+; nREPL Connection was closed
+; Starting Jack-in Terminal: clojure -Sdeps '{:deps {nrepl/nrepl {:mvn/version,"1.0.0"},cider/cider-nrepl {:mvn/version,"0.28.5"}}}' -M -m nrepl.cmdline --middleware "[cider.nrepl/cider-middleware]"
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉user꞉> 
+; Jack-in done.
+clj꞉user꞉> 
+; Evaluating file: send_email.clj
+#'send-email/send-me-an-email!
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+; Execution error (FileNotFoundException) at java.io.FileInputStream/open0 (FileInputStream.java:-2).
+; ../ejercicios_tarea.md (No such file or directory)
+clj꞉extra꞉> 
+nil
+clj꞉extra꞉> 
+; Execution error (FileNotFoundException) at java.io.FileInputStream/open0 (FileInputStream.java:-2).
+; ../ejercicios_tarea.md (No such file or directory)
+clj꞉extra꞉> 
+; Execution error (FileNotFoundException) at java.io.FileInputStream/open0 (FileInputStream.java:-2).
+; ../ejercicios.txt (No such file or directory)
+clj꞉extra꞉> 
+; Execution error (FileNotFoundException) at java.io.FileInputStream/open0 (FileInputStream.java:-2).
+; ..ejercicios.txt (No such file or directory)
+clj꞉extra꞉> 
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+; Syntax error compiling at (src/extra.clj:5:15).
+; Unable to resolve symbol: c in this context
+clj꞉extra꞉> 
+; Syntax error compiling at (src/extra.clj:4:28).
+; Unable to resolve symbol: reader in this context
+clj꞉extra꞉> 
+; Syntax error compiling at (src/extra.clj:3:1).
+; Unable to resolve symbol: readln in this context
+clj꞉extra꞉> 
+; Syntax error compiling at (src/extra.clj:3:1).
+; Unable to resolve symbol: readln in this context
+clj꞉extra꞉> 
+; Syntax error compiling at (src/extra.clj:3:1).
+; Unable to resolve symbol: readln in this context
+clj꞉extra꞉> 
+; Syntax error compiling at (src/extra.clj:3:1).
+; Unable to resolve symbol: line-reader in this context
+clj꞉extra꞉> 
+#'extra/line-reader
+clj꞉extra꞉> 
+; Execution error (ArityException) at extra/eval8041 (REPL:11).
+; Wrong number of args (1) passed to: extra/line-reader
+clj꞉extra꞉> 
+; Execution error (ArityException) at extra/eval8043 (REPL:11).
+; Wrong number of args (1) passed to: extra/line-reader
+clj꞉extra꞉> 
+; Execution error (ArityException) at extra/eval8045 (REPL:11).
+; Wrong number of args (1) passed to: extra/line-reader
+clj꞉extra꞉> 
+; Evaluating file: extra.clj
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+; Syntax error compiling def at (src/extra.clj:3:1).
+; Too many arguments to def
+clj꞉extra꞉> 
+; Evaluating file: extra.clj
+; Syntax error compiling def at (src/extra.clj:3:1).
+; Too many arguments to def
+; Evaluation of file extra.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉extra꞉> 
+; Evaluating file: extra.clj
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+; Evaluating file: extra.clj
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+## Ejercicios de tarea
+1. Encontrar algÃºn otro dominio que no utilice SSL y responder a las siguientes preguntas:
+   - Â¿CuÃ¡l es el dominio que encontraste? \
+   
+   	info.cern.ch
+   - Â¿Es un problema que el sitio no utilice HTTPs? \
+   	
+   	DirÃ­a que no ya que no solicita informaciÃ³n personal de ningÃºn tipo. Supongo que es capaz de obtener algunos datos como mi IP y rastrear mi zona pero dudo que los dueÃ±os del sitio lo hagan ya que por lo que investiguÃ© se trata del primer sitio web de la historia, en posesiÃ³n del CERN. Por lo que dudo que sea inseguro.
+   - Â¿HTTPs deberÃ­a ser utilizado **siempre**? Â¿por quÃ©? \
+   
+   	Se deberÃ­a procurar usarlo siempre, pero si se piensa hacer una pÃ¡gina web con logins o algÃºn mÃ©todo de autenticaciÃ³n y encima se piensa usar redes wifi muy 						antiguas, quizÃ¡s se podrÃ­a valorar y considerar quÃ© informaciÃ³n y a quiÃ©n es posible que se la estÃ©n cediendo. Pero en general, por mayores temas de seguridad y gracias a que el hardware cada vez es mejor, s
+Ã­ deberÃ­amos aspirar a usar siempre HTTPs.
+   	
+2. Excluyendo a Gmail, Â¿quÃ© otros servicios de correo electrÃ³nico existen que permiten usar sus servidores para enviar correos desde un cliente propio?
+   Menciona al menos uno y sus parÃ¡metros de configuraciÃ³n. \
+   
+   	El otro servicio de correo electrÃ³nico que nos lo permite es Amazon Simple Email Service.
+   	Sus parÃ¡metros de configuraciÃ³n usando postal.core son:
+   	(send-message {:user " ; Tu usuario
+   		       "
+ 		       :pass " ; Tu contraseÃ±a
+ 		       "
+                       :host "email-smtp.us-east-1.amazonaws.com"
+                       :port 587}
+               {:from "  ; La direcciÃ³n de correo de origen
+                "
+                :to "  ; La direcciÃ³n de correo de destino
+                "
+                :subject "  ; El asunto del mail
+                "
+                :body "  ; El cuerpo del mail
+                "})
+                
+3. Â¿CuÃ¡l es el puerto por defecto de escucha de HTTPs y cuÃ¡l es el de SMTP? Â¿por q
+uÃ© crees que Gmail cambiÃ³ el puerto por defecto? \
+
+	El de HTTPs es el 443.\
+	Para el SMTP, segÃºn su RFC correspondiente (5321<sup>[1]</sup>), en el apartado 4.5.4.2 se dice que es el puerto 25. Pero en otras pÃ¡ginas web encontrÃ© que se usan los puertos 25, 465, 587 Ã³ 2525, pero que para usos actuales sÃ³lo deberÃ­amos considerar el uso de los puertos 587 Ã³ 2525.
+	
+	Porque Gmail nos sugiere que para enviar correos desde una aplicaciÃ³n creada por nosotros debemos usar el servicio STMP de retransmisiÃ³n, ya que autentifica usando nuestra direcciÃ³n IP<sup>[2]</sup>.
+	AdemÃ¡s no es buena idea usar el puerto 25 (que es el estÃ¡ndar) ya que los ISP tienden a bloquear este puerto para reducir la cantidad de spam que se transmite<sup>[3]</sup>. Por lo que lo mejor es usar el puerto 587 o su puerto espejo 2525.
+	
+ 	[1] https://www.rfc-editor.org/rfc/rfc5321 
+  
+	[2] https://support.google.com/a/answer/176600?hl=en 
+  
+	[3] https://www.mailgun.com/blog/email/which-smtp-port-understanding-ports-25-465-587/  ; E
+n el apartado `Which SMTP port should I use?`
+nil
+clj꞉extra꞉> 
+; Evaluating file: send_email.clj
+; Syntax error (ClassNotFoundException) compiling at (src/send_email.clj:8:3).
+; ejercicios_tarea.md
+; Evaluation of file send_email.clj failed: class clojure.lang.Compiler$CompilerException
+clj꞉send-email꞉> 
+; Syntax error (ClassNotFoundException) compiling at (src/send_email.clj:8:3).
+; ejercicios_tarea.md
+clj꞉send-email꞉> 
+; Evaluating file: send_email.clj
+#'send-email/send-me-an-email!
+clj꞉send-email꞉> 
+#'send-email/send-me-an-email!
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+#'send-email/send-me-an-email!
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+#'send-email/send-me-an-email!
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+#'send-email/send-me-an-email!
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
+{:code 0, :error :SUCCESS, :message "messages sent"}
+clj꞉send-email꞉> 
