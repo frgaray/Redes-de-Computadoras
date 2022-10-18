@@ -9,5 +9,5 @@
     (.write w (str content))))
 
 (defn http-get-writer [url output-name]
-  (file-writer output-name
+  (file-writer output-name 
                (b/b (a/a url))))
