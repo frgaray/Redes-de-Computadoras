@@ -1,0 +1,295 @@
+; This is the Calva evaluation results output window.
+; TIPS: The keyboard shortcut `ctrl+alt+o o` shows and focuses this window
+;   when connected to a REPL session.
+; Please see https://calva.io/output/ for more info.
+; Happy coding! ♥️
+
+; Jacking in...
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉graph.core꞉>  ; Use `alt+enter` to evaluate
+; Jack-in done.
+clj꞉graph.core꞉> 
+nil
+clj꞉graph.prueba꞉> 
+; Execution error (ClassCastException) at graph.prueba/eval6093 (form-init12161492642048683651.clj:25).
+; class java.lang.Long cannot be cast to class clojure.lang.IFn (java.lang.Long is in module java.base of loader 'bootstrap'; clojure.lang.IFn is in unnamed module of loader 'app')
+clj꞉graph.prueba꞉> 
+; Syntax error compiling at (src/graph/prueba.clj:14:1).
+; Unable to resolve symbol: graph1 in this context
+clj꞉graph.prueba꞉> 
+; Syntax error compiling at (src/graph/prueba.clj:12:13).
+; Unable to resolve symbol: make-verts in this context
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+{:0 :0, :1 :1, :2 :2, :3 :3, :4 :4, :5 :5}
+clj꞉graph.prueba꞉> 
+#'graph.prueba/make-verts
+clj꞉graph.prueba꞉> 
+#'graph.prueba/random-key
+clj꞉graph.prueba꞉> 
+#'graph.prueba/graph1
+clj꞉graph.prueba꞉> 
+; Syntax error compiling at (src/graph/prueba.clj:15:40).
+; Unable to resolve symbol: i in this context
+clj꞉graph.prueba꞉> 
+; Syntax error compiling def at (src/graph/prueba.clj:14:15).
+; First argument to def must be a Symbol
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 [], #'graph.prueba/i [{:vertex :0}]}
+clj꞉graph.prueba꞉> (i)
+
+; Execution error (IllegalArgumentException) at graph.prueba/eval7870 (form-init12161492642048683651.clj:49).
+; Wrong number of args passed to keyword: :1
+clj꞉graph.prueba꞉> i
+:1
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:4
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:2
+clj꞉graph.prueba꞉> 
+:9
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:7
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:3
+clj꞉graph.prueba꞉> 
+:9
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:2
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:5
+clj꞉graph.prueba꞉> 
+:3
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:2
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:2
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:5
+clj꞉graph.prueba꞉> 
+:9
+clj꞉graph.prueba꞉> 
+:9
+clj꞉graph.prueba꞉> 
+:3
+clj꞉graph.prueba꞉> 
+:5
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+:0
+clj꞉graph.prueba꞉> 
+:6
+clj꞉graph.prueba꞉> 
+:9
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 [], #'graph.prueba/i [{:vertex :4}]}
+clj꞉graph.prueba꞉> (graph1)
+; Execution error (ArityException) at graph.prueba/eval7952 (form-init12161492642048683651.clj:135).
+; Wrong number of args (0) passed to: clojure.lang.PersistentHashMap
+clj꞉graph.prueba꞉> (print graph1)
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 []}nil
+clj꞉graph.prueba꞉> 
+#'graph.prueba/i
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+1
+clj꞉graph.prueba꞉> 
+:4
+clj꞉graph.prueba꞉> 
+; Execution error (ArityException) at graph.prueba/eval7962 (form-init12161492642048683651.clj:14).
+; Wrong number of args (2) passed to: clojure.core/assoc--5416
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [{:vertex :3}], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [{:vertex :0}], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [{:vertex :2}], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> i
+1
+clj꞉graph.prueba꞉> i
+1
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+:i
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+[]
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+:8
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [{:vertex :5}], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+; Jacking in...
+; nREPL Connection was closed
+; Starting Jack-in Terminal: lein update-in :dependencies conj '[nrepl,"1.0.0"]' -- update-in :plugins conj '[cider/cider-nrepl,"0.28.5"]' -- update-in '[:repl-options,:nrepl-middleware]' conj '["cider.nrepl/cider-middleware"]' -- repl :headless
+; Hooking up nREPL sessions...
+; Connected session: clj
+; TIPS:
+;   - You can edit the contents here. Use it as a REPL if you like.
+;   - `alt+enter` evaluates the current top level form.
+;   - `ctrl+enter` evaluates the current form.
+;   - `alt+up` and `alt+down` traverse up and down the REPL command history
+;      when the cursor is after the last contents at the prompt
+;   - Clojure lines in stack traces are peekable and clickable.
+clj꞉graph.core꞉> 
+; Jack-in done.
+clj꞉graph.core꞉> 
+nil
+clj꞉graph.prueba꞉> 
+{:0 :0, :1 :1, :2 :2, :3 :3, :4 :4, :5 :5}
+clj꞉graph.prueba꞉> 
+#'graph.prueba/make-verts
+clj꞉graph.prueba꞉> 
+#'graph.prueba/random-key
+clj꞉graph.prueba꞉> 
+#'graph.prueba/graph1
+clj꞉graph.prueba꞉> 
+; Syntax error compiling at (src/graph/prueba.clj:17:13).
+; Unable to resolve symbol: i in this context
+clj꞉graph.prueba꞉> 
+; Syntax error compiling at (src/graph/prueba.clj:15:40).
+; Unable to resolve symbol: i in this context
+clj꞉graph.prueba꞉> 
+; Syntax error compiling at (src/graph/prueba.clj:15:40).
+; Unable to resolve symbol: i in this context
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 #function[clojure.core/zipmap], :5 [], [:vertex] [:4], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 #function[clojure.core/zipmap], :2 [], :5 [], [:vertex] [:8], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 {:vertex :2}, :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 {:vertex :7}, :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 {:vertex :4}, :9 [], :2 [], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 {:vertex :1}}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 {:vertex :6}, :2 [], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 {:vertex :7}, :2 [], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 {:vertex :2}, :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 {:vertex :9}, :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+#'graph.prueba/random-edge
+clj꞉graph.prueba꞉> (random-edge graph1)
+{:0 [], :4 [], :7 {:vertex :4}, :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 []}
+clj꞉graph.prueba꞉> 
+0
+clj꞉graph.prueba꞉> 
+0
+clj꞉graph.prueba꞉> 
+10
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+987654321nil
+clj꞉graph.prueba꞉> 
+; Syntax error (UnsupportedOperationException) compiling recur at (src/graph/prueba.clj:25:9).
+; Can only recur from tail position
+clj꞉graph.prueba꞉> 
+; Syntax error (UnsupportedOperationException) compiling recur at (src/graph/prueba.clj:25:9).
+; Can only recur from tail position
+clj꞉graph.prueba꞉> 
+10
+9
+8
+7
+6
+5
+4
+3
+2
+nil
+clj꞉graph.prueba꞉> 
+10
+8
+6
+4
+2
+nil
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+nil
+clj꞉graph.prueba꞉> 
+1
+clj꞉graph.prueba꞉> 
+1
+clj꞉graph.prueba꞉> 
+#'graph.prueba/random-edge
+clj꞉graph.prueba꞉> (random-edge graph1)
+{:0 [], :4 [], :7 [], :1 [], :8 [], :9 [], :2 [], :5 [], :3 [], :6 {:vertex :3}}
+clj꞉graph.prueba꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (1) passed to: clojure.core/for
+clj꞉graph.prueba꞉> 
+; Execution error (ArityException) at nrepl.middleware.interruptible-eval/evaluate$fn$fn (interruptible_eval.clj:87).
+; Wrong number of args (1) passed to: clojure.core/for
+clj꞉graph.prueba꞉> 
+; Syntax error macroexpanding for at (src/graph/prueba.clj:31:1).
+; for requires a vector for its binding in graph.prueba:31
+clj꞉graph.prueba꞉> 
+; Syntax error macroexpanding for at (src/graph/prueba.clj:31:1).
+; for requires an even number of forms in binding vector in graph.prueba:31
+clj꞉graph.prueba꞉> 
+(0 1 2 3 4)
+clj꞉graph.prueba꞉> 
